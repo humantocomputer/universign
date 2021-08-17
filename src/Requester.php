@@ -48,7 +48,7 @@ class Requester
             dump($response);
         }
 
-        throw new Exception($response);
+        throw new UnexpectedValueException($response);
     }
     
     /** 
@@ -123,7 +123,7 @@ class Requester
             dump($response);
         }
 
-        throw new Exception($response);
+        throw new UnexpectedValueException($response);
 
 
     }
