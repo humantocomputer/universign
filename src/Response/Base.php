@@ -42,7 +42,7 @@ abstract class Base
             case 'array':
                 $data = [];
                 foreach ($values->scalarval() as $val) {
-                    $data = $this->parseValue($val);
+                    $data[] = $this->parseValue($val);
                 }
                 return $data;
             case 'struct':
