@@ -125,9 +125,31 @@ class Requester
 
         throw new UnexpectedValueException($response);
 
-
     }
 
+    /**
+     * Cancel transaction for transactionId
+     *
+     * @param   string $transactionId
+     * @return  \HumanToComputer\Universign\Response\TransactionInfo[]
+     */
+    public function cancelTransaction($transactionId)
+    {
+        $client = $this->getClient();
+        $request = new \xmlrpcmsg('requester.cancelTransaction', [new \xmlrpcval($transactionId, 'string')]);
+        $response = &$client->send($request);
+
+        if (!$response->faultCode()) {
+            return true;
+        }
+
+        if($this->debug)
+        {
+            dump($response);
+        }
+
+        throw new \Exception($response->errstr, $response->errno);
+    }
 
     private function getURLRequest() 
     {
