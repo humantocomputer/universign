@@ -73,7 +73,7 @@ class Requester
             return $data;
         } 
 
-        throw new UnexpectedValueException($response);
+        throw new \Exception($response->errstr, $response->errno);
     }
 
     /** 
@@ -98,7 +98,7 @@ class Requester
             return $data;
         } 
 
-        throw new UnexpectedValueException($response);
+        throw new \Exception($response->errstr, $response->errno);
     }
 
 
