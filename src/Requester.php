@@ -123,7 +123,7 @@ class Requester
             dump($response);
         }
 
-        throw new UnexpectedValueException($response);
+        throw new \Exception($response->errstr, $response->errno);
 
     }
 
