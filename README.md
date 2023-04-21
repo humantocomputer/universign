@@ -75,7 +75,7 @@ $request
     ->setHandwrittenSignature(true)
     ->setChainingMode(TransactionRequestChainingMode::CHAINING_MODE_EMAIL)
     ->setFinalDocRequesterSent(false)
-    ->setFinalDocCCeMails('yourmail@yourdomain.com');
+    ->setFinalDocCCeMails(['yourmail@yourdomain.com']);
 ```
 
 ### Transaction request

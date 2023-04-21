@@ -32,7 +32,7 @@ class TransactionRequest extends Base
         'handwrittenSignature' => 'bool',
         'chainingMode' => 'string',
         'finalDocRequesterSent' => 'bool',
-        'finalDocCCeMails' => 'string',
+        'finalDocCCeMails' => 'array',
     ];
 
     public function addSigner(TransactionSigner $signer)
