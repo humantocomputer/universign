@@ -2684,12 +2684,26 @@ xmlrpc_encode_entitites($this->errstr, $GLOBALS['xmlrpc_internalencoding'], $cha
 			xml_set_default_handler($parser, 'xmlrpc_dh');
 
 			// first error check: xml not well formed
-			if(!xml_parse($parser, $data, 1))
+			//chunking data to avoid memory problems
+			$chunk = 65536;
+			$pos = 0;
+			$len = strlen($data);
+			while($pos < $len) {
+				$chunkdata = substr($data, $pos, $chunk);
+				$pos += $chunk;
+				if ($pos < $len) {
+					xml_parse($parser, $chunkdata);
+				} // analyse du morceau courant
+			}
+
+			if(!xml_parse($parser, $chunkdata, 1))
 			{
 				// thanks to Peter Kocks <peter.kocks@baygate.com>
 				if((xml_get_current_line_number($parser)) == 1)
 				{
-					$errstr = 'XML error at line 1, check URL';
+					$errstr = sprintf('XML error: %s at line %d, column %d',
+						xml_error_string(xml_get_error_code($parser)),
+						xml_get_current_line_number($parser), xml_get_current_column_number($parser));
 				}
 				else
 				{
