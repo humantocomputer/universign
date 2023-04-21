@@ -73,7 +73,9 @@ $request
     ->setCertificateType(TransactionRequestCertificate::CERTIFICATE_CERTIFIED)
     ->setLanguage(TransactionRequestLanguage::FRENCH)
     ->setHandwrittenSignature(true)
-    ->setChainingMode(TransactionRequestChainingMode::CHAINING_MODE_EMAIL);
+    ->setChainingMode(TransactionRequestChainingMode::CHAINING_MODE_EMAIL)
+    ->setFinalDocRequesterSent(false)
+    ->setFinalDocCCeMails('yourmail@yourdomain.com');
 ```
 
 ### Transaction request
