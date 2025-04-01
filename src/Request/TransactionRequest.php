@@ -33,6 +33,7 @@ class TransactionRequest extends Base
         'chainingMode' => 'string',
         'finalDocRequesterSent' => 'bool',
         'finalDocCCeMails' => 'array',
+        'registrationCallbackURL' => 'string',
     ];
 
     public function addSigner(TransactionSigner $signer)
